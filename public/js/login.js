@@ -30,6 +30,7 @@ $(document).ready(() => {
     })
       .then(() => {
         window.location.replace("/members");
+        //^^^ EDIT THIS TO NEW HTML ENDPOINT ^^^
         // If there's an error, log the error
       })
       .catch(err => {
