@@ -52,4 +52,61 @@ module.exports = function(app) {
       });
     }
   });
+
+  
+  app.get("/api/all-tasks/", function(req, res) {
+    db.Post.findAll({})
+      .then(function(dbTasks) {
+        res.json(dbTasks);
+      });
+  });
+
+  app.post("/api/all-tasks", function(req, res) {
+    console.log(req.body);
+    db.Post.create({
+      title: req.body.title,
+      body: req.body.body,
+     // category: req.body.category
+    })
+      .then(function(dbTasks) {
+        res.json(dbTasks);
+      });
+  });
+
+  app.get("/api/today/:day", function(req, res) {
+    
+    //var toDay = moment().format('MMMM Do YYYY, h:mm:ss a');
+    //$("#currentDay").text(toDay);
+    db.Post.findAll({
+      where: {
+        day: toDay
+      }
+    })
+      .then(function(dbTasks) {
+        res.json(dbTasks);
+      });
+  });
+
+  app.delete("/api/all-tasks/:id", function(req, res) {
+    db.Post.destroy({
+      where: {
+        id: req.params.id
+      }
+    })
+      .then(function(dbTasks) {
+        res.json(dbTasks);
+      });
+  });
+
+  app.put("/api/all-tasks", function(req, res) {
+    db.Post.update(req.body,
+      {
+        where: {
+          id: req.body.id
+        }
+      })
+      .then(function(dbTasks) {
+        res.json(dbTasks);
+      });
+  });
 };
