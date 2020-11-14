@@ -37,6 +37,14 @@ module.exports = function(app) {
     res.sendFile(path.join(__dirname, "../public/tasks2.html"));
   });
 
+  app.get("/addtasks", (req, res) => {
+    // If the user already has an account send them to the members page
+    if (req.user) {
+      res.redirect("/addtasks");
+    }
+    res.sendFile(path.join(__dirname, "../public/addtasks.html"));
+  });
+
   app.get("/logout", (req, res) => {
     // If the user already has an account send them to the members page
     if (req.user) {
