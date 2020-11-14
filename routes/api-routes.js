@@ -62,8 +62,11 @@ module.exports = function(app) {
   app.post("/api/all-tasks", (req, res) => {
     console.log(req.body);
     db.Post.create({
-      title: req.body.title,
-      body: req.body.body
+      name: req.body.name,
+      description: req.body.description,
+      dueDate: req.body.dueDate,
+      sendMail: req.body.sendMail,
+      owner: req.body.owner
       // category: req.body.category
     }).then(dbTasks => {
       res.json(dbTasks);
@@ -75,7 +78,7 @@ module.exports = function(app) {
     //$("#currentDay").text(toDay);
     db.Post.findAll({
       where: {
-        day: toDay
+        dueDate: toDay
       }
     }).then(dbTasks => {
       res.json(dbTasks);
