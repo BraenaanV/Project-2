@@ -53,20 +53,23 @@ module.exports = function(app) {
     }
   });
 
-  app.get("/api/all-tasks/", (req, res) => {
-    db.Post.findAll({}).then(dbTasks => {
+  app.get("/api/tasks/", (req, res) => {
+    db.Task.findAll({}).then(dbTasks => {
       res.json(dbTasks);
     });
   });
 
-  app.post("/api/all-tasks", (req, res) => {
+  app.post("/api/addtasks", (req, res) => {
     console.log(req.body);
-    db.Post.create({
+    let mailer = false;
+    if (req.body.sendMail === "on") {
+      mailer = true;
+    }
+    db.Task.create({
       name: req.body.name,
       description: req.body.description,
       dueDate: req.body.dueDate,
-      sendMail: req.body.sendMail,
-      owner: req.body.owner
+      sendMail: mailer
       // category: req.body.category
     }).then(dbTasks => {
       res.json(dbTasks);
@@ -76,7 +79,7 @@ module.exports = function(app) {
   app.get("/api/today/:day", (req, res) => {
     //var toDay = moment().format('MMMM Do YYYY, h:mm:ss a');
     //$("#currentDay").text(toDay);
-    db.Post.findAll({
+    db.Task.findAll({
       where: {
         dueDate: toDay
       }
@@ -86,7 +89,7 @@ module.exports = function(app) {
   });
 
   app.delete("/api/all-tasks/:id", (req, res) => {
-    db.Post.destroy({
+    db.Task.destroy({
       where: {
         id: req.params.id
       }
@@ -96,7 +99,7 @@ module.exports = function(app) {
   });
 
   app.put("/api/all-tasks", (req, res) => {
-    db.Post.update(req.body, {
+    db.Task.update(req.body, {
       where: {
         id: req.body.id
       }
