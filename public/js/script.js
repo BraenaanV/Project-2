@@ -5,7 +5,7 @@ $("#run-search").on("click", () => {
     method: "GET"
   }).then(response => {
     console.log(response.results);
-    for (let i = 1; i < 5; i++) {
+    for (let i = 1; i < 6; i++) {
       const article = response.results[i];
       const $articleList = $("<ul>");
       $articleList.addClass("list-group");
@@ -16,7 +16,7 @@ $("#run-search").on("click", () => {
       $articleListItem.append(
         "<a href='" + article.url + "'>" + article.url + "</a>"
       );
-      console.log(article.web_url);
+      console.log(article.url);
       $articleList.append($articleListItem);
     }
   });

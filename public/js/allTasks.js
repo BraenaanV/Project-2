@@ -1,5 +1,5 @@
 // Make a get request to our api route that will return every book
-$.get("/api/all-tasks", data => {
+$.get("/api/tasks", data => {
   // For each book that our server sends us back
   for (let i = 0; i < data.length; i++) {
     // Create a parent div to hold book data

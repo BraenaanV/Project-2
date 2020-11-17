@@ -6,7 +6,7 @@ $("#add-btn").on("click", event => {
 
   // Make a newBook object
   const newTask = {
-    title: $("#name")
+    name: $("#name")
       .val()
       .trim(),
     description: $("#desc")
@@ -15,13 +15,13 @@ $("#add-btn").on("click", event => {
     dueDate: $("#duedate")
       .val()
       .trim(),
-    setReminder: $("#email")
+    sendMail: $("#email")
       .val()
       .trim()
   };
 
   // Send an AJAX POST-request with jQuery
-  $.post("/api/new", newTask)
+  $.post("/api/addtasks", newTask)
     // On success, run the following code
     .then(data => {
       // Log the data we found
