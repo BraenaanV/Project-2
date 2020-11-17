@@ -93,4 +93,9 @@ function currentLocation() {
   }
 }
 
+$("#mailMe").on("click", event => {
+  event.preventDefault();
+  sendMail();
+});
+
 currentLocation();
