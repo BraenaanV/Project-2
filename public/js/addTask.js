@@ -1,3 +1,4 @@
+/* eslint-disable no-var */
 // The code in add.js handles what happens when the user clicks the "Add a book" button.
 
 // When user clicks add-btn
@@ -5,7 +6,8 @@ $("#add-btn").on("click", event => {
   event.preventDefault();
 
   // Make a newBook object
-  const newTask = {
+  // eslint-disable-next-line vars-on-top
+  var newTask = {
     name: $("#name")
       .val()
       .trim(),
@@ -32,5 +34,5 @@ $("#add-btn").on("click", event => {
   $("#name").val("");
   $("#description").val("");
   $("#duedate").val("");
-  $("#reminder").val("");
+  $("#email").val("");
 });
