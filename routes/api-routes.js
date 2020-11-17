@@ -1,6 +1,7 @@
 // Requiring our models and passport as we've configured it
 const db = require("../models");
 const passport = require("../config/passport");
+const { Sequelize } = require("../models");
 
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -76,12 +77,12 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/api/todayTask/:day", (req, res) => {
-    //var toDay = moment().format('MMMM Do YYYY, h:mm:ss a');
-    //$("#currentDay").text(toDay);
+  app.get("/api/todayTasks/", (req, res) => {
     db.Task.findAll({
       where: {
-        dueDate: toDay
+        dueDate: {
+          $gte: Sequelize.literal("NOW()")
+        }
       }
     }).then(dbTasks => {
       res.json(dbTasks);
