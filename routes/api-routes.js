@@ -53,7 +53,7 @@ module.exports = function(app) {
     }
   });
 
-  app.get("/api/tasks/", (req, res) => {
+  app.get("/api/allTasks/", (req, res) => {
     db.Task.findAll({}).then(dbTasks => {
       res.json(dbTasks);
     });
@@ -76,7 +76,7 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/api/today/:day", (req, res) => {
+  app.get("/api/todayTask/:day", (req, res) => {
     //var toDay = moment().format('MMMM Do YYYY, h:mm:ss a');
     //$("#currentDay").text(toDay);
     db.Task.findAll({
@@ -88,7 +88,7 @@ module.exports = function(app) {
     });
   });
 
-  app.delete("/api/all-tasks/:id", (req, res) => {
+  app.delete("/api/allTasks/:id", (req, res) => {
     db.Task.destroy({
       where: {
         id: req.params.id
@@ -98,7 +98,7 @@ module.exports = function(app) {
     });
   });
 
-  app.put("/api/all-tasks", (req, res) => {
+  app.put("/api/allTasks", (req, res) => {
     db.Task.update(req.body, {
       where: {
         id: req.body.id

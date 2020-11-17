@@ -1,22 +1,27 @@
+/* eslint-disable no-var */
 // Make a get request to our api route that will return every book
-$.get("/api/tasks", data => {
+$.get("/api/allTasks", data => {
+  console.log(data);
   // For each book that our server sends us back
   for (let i = 0; i < data.length; i++) {
     // Create a parent div to hold book data
-    const viewSection = $("<div>");
+    // eslint-disable-next-line vars-on-top
+    var taskSection = $("<div>");
     // Add a class to this div: 'well'
-    viewSection.addClass("well");
+    taskSection.addClass("tasker");
     // Add an id to the well to mark which well it is
-    viewSection.attr("id", "task-well-" + i);
+    taskSection.attr("id", "task-well-" + i);
     // Append the well to the well section
-    $("#view-section").append(viewSection);
+    $("#task-section").append(taskSection);
 
     // Now  we add our book data to the well we just placed on the page
-    $("#book-well-" + i).append(
+    $("#task-well-" + i).append(
       "<h2>" + (i + 1) + ". " + data[i].name + "</h2>"
     );
-    $("#task-well-" + i).append("<h5>Description: " + data[i].desc + "</h5>");
-    $("#task-well-" + i).append("<h5>Genre: " + data[i].duedate + "</h5>");
-    $("#task-well-" + i).append("<h5>Reminder: " + data[i].email + "</h5>");
+    $("#task-well-" + i).append(
+      "<h5>Description: " + data[i].description + "</h5>"
+    );
+    $("#task-well-" + i).append("<h5>Due: " + data[i].dueDate + "</h5>");
+    $("#task-well-" + i).append("<h5>Reminder: " + data[i].sendMail + "</h5>");
   }
 });
