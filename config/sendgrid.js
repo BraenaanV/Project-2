@@ -16,7 +16,7 @@ function sendMail() {
       attributes: ["name"]
     })
       .then(task => {
-        array.push(task);
+        currentTasks.push(task);
       })
       .then(emailMe());
   }

@@ -95,7 +95,7 @@ function currentLocation() {
 
 $("#mailMe").on("click", event => {
   event.preventDefault();
-  sendMail();
+  $.post("/api/mail");
 });
 
 currentLocation();

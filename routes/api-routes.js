@@ -1,6 +1,8 @@
 // Requiring our models and passport as we've configured it
 const db = require("../models");
 const passport = require("../config/passport");
+const sendMail = require("../config/sendgrid");
+
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
@@ -105,5 +107,10 @@ module.exports = function(app) {
     }).then(dbTasks => {
       res.json(dbTasks);
     });
+  });
+
+  app.post("/api/mail", (req, res) => {
+    sendMail();
+    res.json({ status: "success" });
   });
 };
