@@ -2,6 +2,7 @@
 const db = require("../models");
 const passport = require("../config/passport");
 const sendMail = require("../config/sendgrid");
+const moment = require("moment");
 
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -78,14 +79,14 @@ module.exports = function(app) {
   });
 
   app.get("/api/todayTask/:day", (req, res) => {
-    //var toDay = moment().format('MMMM Do YYYY, h:mm:ss a');
-    //$("#currentDay").text(toDay);
+    const toDay = moment().format("YYYY-MM-DD");
     db.Task.findAll({
       where: {
         dueDate: toDay
       }
     }).then(dbTasks => {
       res.json(dbTasks);
+      console.log(toDay);
     });
   });
 
