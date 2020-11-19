@@ -1,20 +1,17 @@
+/* eslint-disable vars-on-top */
 /* eslint-disable no-var */
-// Make a get request to our api route that will return every book
+
 $.get("/api/allTasks", data => {
   console.log(data);
-  // For each book that our server sends us back
   for (let i = 0; i < data.length; i++) {
-    // Create a parent div to hold book data
-    // eslint-disable-next-line vars-on-top
     var taskSection = $("<div>");
-    // Add a class to this div: 'well'
+
     taskSection.addClass("tasker");
-    // Add an id to the well to mark which well it is
+
     taskSection.attr("id", "task-well-" + i);
-    // Append the well to the well section
+
     $("#task-section").append(taskSection);
 
-    // Now  we add our book data to the well we just placed on the page
     $("#task-well-" + i).append(
       "<h2>" + (i + 1) + ". " + data[i].name + "</h2>"
     );

@@ -4,6 +4,7 @@ const passport = require("../config/passport");
 const sendMail = require("../config/sendgrid");
 const moment = require("moment");
 
+
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
   // If the user has valid login credentials, send them to the members page.
@@ -78,11 +79,14 @@ module.exports = function(app) {
     });
   });
 
+
   app.get("/api/todayTask/:day", (req, res) => {
     const toDay = moment().format("YYYY-MM-DD");
     db.Task.findAll({
       where: {
-        dueDate: toDay
+        dueDate: {
+          $gte: Sequelize.literal("NOW()")
+        }
       }
     }).then(dbTasks => {
       res.json(dbTasks);
