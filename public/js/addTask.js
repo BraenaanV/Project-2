@@ -28,6 +28,7 @@ $("#add-btn").on("click", event => {
     .then(data => {
       // Log the data we found
       console.log(data);
+      alert("Task added! Check all tasks!");
     });
 
   // Empty each input box by replacing the value with an empty string

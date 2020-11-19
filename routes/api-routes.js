@@ -82,7 +82,9 @@ module.exports = function(app) {
     const toDay = moment().format("YYYY-MM-DD");
     db.Task.findAll({
       where: {
-        dueDate: toDay
+        dueDate: {
+          $gte: Sequelize.literal("NOW()")
+        }
       }
     }).then(dbTasks => {
       res.json(dbTasks);

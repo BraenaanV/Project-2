@@ -1,4 +1,4 @@
+sendgrid.env
 node_modules/
 .env
 .DS_Store
-sendgrid.env
