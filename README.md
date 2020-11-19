@@ -1,14 +1,12 @@
 # Project 2 - Task Assistant +
 
 ## Description
-This app was made using node.js running in the integrated terminal of VSCode. The purpose of creating this was to design a way to make quick and readable README's.
-The running app will prompt the user to input answers throughout a series of several questions. We now have the information required to construct a readme file. 
-This app compiles the responses and formats them into a finished markdown file.
+This app was made with the intention of creating an easy task management system. Create tasks 
 
 ## User Story
 AS A developer,  
 I WANT a task management app,  
-SO THAT can quickly create tasks to be completed and send myself email reminders  
+SO THAT I can quickly create, manage and send Task email reminders  
 
 ## Table of Contents
 
@@ -18,24 +16,27 @@ SO THAT can quickly create tasks to be completed and send myself email reminders
 * [License](#license)
 
 ## Installation
-No installation needed 😎
+No installation needed, follow the links 😎
 
 ## Usage
-Use for creating, viewing and reminding oneself of tasks via email
+Use for creating, viewing and reminding oneself of tasks via email! We hope you find this as useful as we do. Future features we'd like to implement are ways to delete multiple tasks, sort by due date and admin features. 
 
 ## Credits
+`The Task Managers`
 * Braenaan Vaughan
 * Kwaku Asare Owusu
 * Matthew Pollicito
 
-GitHub Repository - https://github.com/
+GitHub Repository - https://github.com/BraenaanV/Task-Assistant-Plus
+
+Heroku Deployed App - https://bvproject2.herokuapp.com/
 
 ## License
 MIT: <https://rem.mit-license.org>
 
 ### Badges
-(https://img.shields.io/badge/license-[MIT]-blue.svg)
-(https://img.shields.io/github/languages/top/nielsenjared/badmath)
+![](https://img.shields.io/badge/license-[MIT]-blue.svg)
+![](https://img.shields.io/github/languages/top/nielsenjared/badmath)
 
 ---
 © 2020 - Matthew Pollicito, Kwaku Asare Owusu, Braenaan Vaughan. All Rights Reserved.
