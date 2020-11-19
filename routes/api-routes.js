@@ -1,6 +1,8 @@
 // Requiring our models and passport as we've configured it
 const db = require("../models");
 const passport = require("../config/passport");
+const sendMail = require("../config/sendgrid");
+const moment = require("moment");
 
 module.exports = function(app) {
   // Using the passport.authenticate middleware with our local strategy.
@@ -76,7 +78,8 @@ module.exports = function(app) {
     });
   });
 
-  app.get("/api/todayTasks/", (req, res) => {
+  app.get("/api/todayTask/:day", (req, res) => {
+    const toDay = moment().format("YYYY-MM-DD");
     db.Task.findAll({
       where: {
         dueDate: {
@@ -85,6 +88,7 @@ module.exports = function(app) {
       }
     }).then(dbTasks => {
       res.json(dbTasks);
+      console.log(toDay);
     });
   });
 
@@ -106,5 +110,10 @@ module.exports = function(app) {
     }).then(dbTasks => {
       res.json(dbTasks);
     });
+  });
+
+  app.post("/api/mail", (req, res) => {
+    sendMail();
+    res.json({ status: "success" });
   });
 };

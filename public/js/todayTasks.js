@@ -1,7 +1,6 @@
 /* eslint-disable vars-on-top */
 /* eslint-disable no-var */
-
-$.get("/api/todayTasks", data => {
+$.get("/api/todayTask/:day", data => {
   console.log(data);
   for (let i = 0; i < data.length; i++) {
     var taskSection = $("<div>");

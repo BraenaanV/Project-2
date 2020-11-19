@@ -20,5 +20,12 @@ $.get("/api/allTasks", data => {
     );
     $("#task-well-" + i).append("<h5>Due: " + data[i].dueDate + "</h5>");
     $("#task-well-" + i).append("<h5>Reminder: " + data[i].sendMail + "</h5>");
+    // eslint-disable-next-line prettier/prettier
+    $("#task-well-" +i).append("<button type=\"button\" id=\"delete\">Delete</button>");
   }
+});
+
+$("#delete").on("click", event => {
+  event.preventDefault();
+  $.delete("/api/allTasks/:id");
 });
